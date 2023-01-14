@@ -6,20 +6,13 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:52:28 by eric              #+#    #+#             */
-/*   Updated: 2022/10/31 13:18:52 by eholzer          ###   ########.fr       */
+/*   Updated: 2022/12/14 10:33:15 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// n_len()
-// allocate an array of n_len() + 1 slots
-// parse each unit in each slot
-// voila 
-
-// handle the case "0"
-
 #include "libft.h"
 
-static int	n_len(int n)
+static int	nbr_len(int n)
 {
 	int	len;
 
@@ -63,7 +56,7 @@ static char	*is_exception(int n, char *str)
 	return (NULL);
 }
 
-char	*get_str_from_int(char *str, int n, int len)
+static char	*get_str_from_int(char *str, int n, int len)
 {
 	int		i;
 	int		u;
@@ -101,7 +94,7 @@ char	*ft_itoa(int n)
 	str = is_exception(n, str);
 	if (str)
 		return (str);
-	len = n_len(n);
+	len = nbr_len(n);
 	str = get_str_from_int(str, n, len);
 	return (str);
 }

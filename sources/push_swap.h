@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 14:36:48 by eric              #+#    #+#             */
-/*   Updated: 2022/11/02 15:11:25 by eric             ###   ########.fr       */
+/*   Created: 2023/01/10 21:29:19 by eric              #+#    #+#             */
+/*   Updated: 2023/01/14 16:59:10 by eric             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
-	t_list *node;
-	t_list *next;
+// Import the libft, a library with basic C functions.
+# include "../libft/libft.h"
 
-	node = *lst;
-	while (node)
-	{
-		next = node->next;
-		ft_lstdelone(node, del);
-		node = node->next;
-	}
-	*lst = NULL;
-}
+#endif

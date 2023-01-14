@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:29:11 by eric              #+#    #+#             */
-/*   Updated: 2022/11/02 15:55:53 by eric             ###   ########.fr       */
+/*   Updated: 2022/12/21 10:50:30 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,16 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include "ft_printf/ft_printf.h"
 
-// LIBFT Part 1
+// GET_NEXT_LINE
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <unistd.h>
+
+// LIBFT Part 1 -------------------------------
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -42,7 +50,7 @@ int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 
-// LIBFT Part 2
+// LIBFT Part 2 -------------------------------
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
@@ -55,7 +63,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-// LIBFT Bonus Part
+// LIBFT Bonus Part -------------------------------
 typedef struct s_list
 {
 	void			*content;
@@ -71,5 +79,23 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// GET_NEXT_LINE -------------------------------
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+// Functions from the Libft
+char	*ft_strjoin_gnl(char *s1, char *s2);
+size_t	ft_strlen(const char *s);
+// void	*ft_memcpy(void *dst, const void *src, size_t n);
+
+// Utility functions
+int		check_errors(int fd, char **reserve_ptr);
+char	*read_and_get_line(int fd, char **reserve_ptr);
+char	*get_trimmed_line(char *reserve, char **ptr_reserve);
+
+// The actual get_next_line function
+char	*get_next_line(int fd);
 
 #endif
