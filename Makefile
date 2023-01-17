@@ -3,16 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eric <eric@student.42.fr>                  +#+  +:+       +#+         #
+#    By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 21:33:09 by eric              #+#    #+#              #
-#    Updated: 2023/01/14 16:51:26 by eric             ###   ########.fr        #
+#    Updated: 2023/01/17 14:24:05 by eholzer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	push_swap
 
-SRCS_LIST		=	main.c
+SRCS_LIST		=	main.c \
+					instructions_1.c \
+					instructions_2.c \
+					instructions_3.c
 SRCS_DIR		=	sources/
 SRCS			=	${addprefix ${SRCS_DIR}, ${SRCS_LIST}}
 
