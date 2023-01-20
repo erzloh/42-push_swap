@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:29:19 by eric              #+#    #+#             */
-/*   Updated: 2023/01/17 14:32:25 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/01/19 15:59:20 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,20 @@
 // Import the libft, a library with basic C functions.
 # include "../libft/libft.h"
 
+// Define macros
+# define ERROR 1
+
 // Struct
 typedef struct s_stack
 {
 	int	*tab;
 	int	size;
 }	t_stack;
+
+// Errors-handling functions
+int		check_errors(int ac, char **av);
+int		check_digits(int ac, char **av);
+double	check_int_max_atoi(const char *str);
 
 // Utils functions
 void	init_stack_a(int ac, char **av, t_stack *stack_a);

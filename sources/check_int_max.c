@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   check_int_max.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 14:39:01 by eholzer           #+#    #+#             */
-/*   Updated: 2023/01/19 13:40:19 by eholzer          ###   ########.fr       */
+/*   Created: 2023/01/19 13:55:43 by eholzer           #+#    #+#             */
+/*   Updated: 2023/01/19 16:24:41 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 static int	power(int nb, int power)
 {
@@ -39,13 +39,24 @@ static const char	*skip_to_number(const char *str, int *ptr_sign)
 	return (str);
 }
 
-int	ft_atoi(const char *str)
+static int	is_res_out_of_range(double res, int sign)
 {
-	int	i;
-	int	sign;
-	int	*ptr_sign;
-	int	nb_len;
-	int	res;
+	if (res > __INT_MAX__)
+	{
+		if (sign == -1 && res == 2147483648)
+			return (0);
+		return (ERROR);
+	}
+	return (0);
+}
+
+double	check_int_max_atoi(const char *str)
+{
+	int		i;
+	int		sign;
+	int		*ptr_sign;
+	int		nb_len;
+	double	res;
 
 	i = 0;
 	sign = 1;
@@ -55,11 +66,15 @@ int	ft_atoi(const char *str)
 	str = skip_to_number(str, ptr_sign);
 	while (str[i] >= '0' && str[i++] <= '9')
 		nb_len++;
+	if (nb_len > 10)
+		return (ERROR);
 	i = 0;
 	while (i < nb_len)
 	{
 		res += (str[i] - '0') * power(10, nb_len - 1 - i);
+		if (is_res_out_of_range(res, sign))
+			return (ERROR);
 		i++;
 	}
-	return (res * sign);
+	return (0);
 }

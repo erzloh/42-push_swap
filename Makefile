@@ -6,16 +6,19 @@
 #    By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 21:33:09 by eric              #+#    #+#              #
-#    Updated: 2023/01/17 14:24:05 by eholzer          ###   ########.fr        #
+#    Updated: 2023/01/19 16:07:20 by eholzer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	push_swap
 
 SRCS_LIST		=	main.c \
+					utils.c \
 					instructions_1.c \
 					instructions_2.c \
-					instructions_3.c
+					instructions_3.c \
+					check_int_max.c \
+					check_errors.c
 SRCS_DIR		=	sources/
 SRCS			=	${addprefix ${SRCS_DIR}, ${SRCS_LIST}}
 
@@ -27,7 +30,7 @@ LIB				=	libft.a
 LIB_DIR			=	libft
 
 CC				=	gcc
-CFLAGS			=	-Wall -Werror -Wextra
+CFLAGS			=	-Wall -Werror -Wextra -g
 
 all:			${NAME}
 
