@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:29:19 by eric              #+#    #+#             */
-/*   Updated: 2023/01/19 15:59:20 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:32:17 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,11 @@ void	rr(t_stack *stack_a, t_stack *stack_b);
 void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
+
+// Algorithm functions
+int		find_right_place(t_stack *stack_a, t_stack *stack_b);
+int		setup_stack_b(t_stack *stack_b, int right_place);
+void	put_to_right_place(t_stack *stack_b, int tail);
+void	push_swap_algo(t_stack *stack_a, t_stack *stack_b);
 
 #endif

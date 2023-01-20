@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:41:52 by eholzer           #+#    #+#             */
-/*   Updated: 2023/01/17 14:28:13 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:15:21 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	rra(t_stack *stack_a)
 	if (size < 2)
 		return ;
 	tmp = stack_a->tab[size - 1];
-	i = 1;
-	while (i < size)
+	i = 0;
+	while (i < size - 1)
 	{
-		stack_a->tab[i] = stack_a->tab[i - 1];
+		stack_a->tab[size - 1 - i] = stack_a->tab[size - 1 - i - 1];
 		i++;
 	}
 	stack_a->tab[0] = tmp;
@@ -81,10 +81,10 @@ void	rrb(t_stack *stack_b)
 	if (size < 2)
 		return ;
 	tmp = stack_b->tab[size - 1];
-	i = 1;
-	while (i < size)
+	i = 0;
+	while (i < size - 1)
 	{
-		stack_b->tab[i] = stack_b->tab[i - 1];
+		stack_b->tab[size - 1 - i] = stack_b->tab[size - 1 - i - 1];
 		i++;
 	}
 	stack_b->tab[0] = tmp;

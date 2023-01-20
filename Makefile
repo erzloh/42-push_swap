@@ -6,7 +6,7 @@
 #    By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 21:33:09 by eric              #+#    #+#              #
-#    Updated: 2023/01/19 16:07:20 by eholzer          ###   ########.fr        #
+#    Updated: 2023/01/20 17:03:15 by eholzer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS_LIST		=	main.c \
 					instructions_2.c \
 					instructions_3.c \
 					check_int_max.c \
-					check_errors.c
+					check_errors.c \
+					algorithm.c
 SRCS_DIR		=	sources/
 SRCS			=	${addprefix ${SRCS_DIR}, ${SRCS_LIST}}
 
