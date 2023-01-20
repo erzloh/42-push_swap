@@ -3,20 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:26:37 by eholzer           #+#    #+#             */
-/*   Updated: 2023/01/20 18:32:07 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/01/21 00:27:40 by eric             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// pb 
-// find the right place for the newly added elem
-// put the elem to the right place
-// repeat until no elements are left on A
-// pa all elements of b
+// General idea: Take each element of A and put it in B, where each new
+// element in B is put at the right place. B is ordered from biggest to
+// smallest. THen all the elements from B are pushed back to A.
+
+// 1)	Look for the right place in stack B for the current first element
+//		of stack A.
+//
+// 2) 	Setup B in such a way that we can push the element from A to B,
+//		where the element is at the correct place and we just have to
+//		rotate the elements to the top to get everything in place in B.
+//
+// 3)	Push the first element from A to B.
+//
+// 4)	Put the pushed element, that is currently at the top of B, to the
+//		right place.
+//
+// 5)	Repeat until there are no elements left in A.
+//
+// 6)	Push every thing back to A.
 
 int	find_right_place(t_stack *stack_a, t_stack *stack_b)
 {
@@ -60,6 +74,20 @@ void	put_to_right_place(t_stack *stack_b, int tail)
 	}
 }
 
+void	push_all_to_a(t_stack *stack_a, t_stack *stack_b)
+{
+	int	i;
+	int	intial_b_size;
+
+	i = 0;
+	intial_b_size = stack_b->size;
+	while (i < intial_b_size)
+	{
+		pa(stack_a, stack_b);
+		i++;
+	}
+}
+
 void	push_swap_algo(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
@@ -83,4 +111,5 @@ void	push_swap_algo(t_stack *stack_a, t_stack *stack_b)
 		put_to_right_place(stack_b, tail);
 		i++;
 	}
+	push_all_to_a(stack_a, stack_b);
 }

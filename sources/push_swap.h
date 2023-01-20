@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:29:19 by eric              #+#    #+#             */
-/*   Updated: 2023/01/20 18:32:17 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/01/21 00:26:32 by eric             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ int		find_right_place(t_stack *stack_a, t_stack *stack_b);
 int		setup_stack_b(t_stack *stack_b, int right_place);
 void	put_to_right_place(t_stack *stack_b, int tail);
 void	push_swap_algo(t_stack *stack_a, t_stack *stack_b);
+void	push_all_to_a(t_stack *stack_a, t_stack *stack_b);
 
 #endif
