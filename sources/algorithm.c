@@ -6,7 +6,7 @@
 /*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:26:37 by eholzer           #+#    #+#             */
-/*   Updated: 2023/01/21 00:27:40 by eric             ###   ########.fr       */
+/*   Updated: 2023/01/21 20:56:13 by eric             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	find_right_place(t_stack *stack_a, t_stack *stack_b)
 	return (i);
 }
 
-int	setup_stack_b(t_stack *stack_b, int right_place)
+int	setup_stack_b(t_stack *stack_b, int right_place, int *instructions)
 {
 	int	tail;
 	int	i;
@@ -55,13 +55,13 @@ int	setup_stack_b(t_stack *stack_b, int right_place)
 	i = 0;
 	while (i < tail)
 	{
-		rrb(stack_b);
+		rrb(stack_b, instructions);
 		i++;
 	}
 	return (tail);
 }
 
-void	put_to_right_place(t_stack *stack_b, int tail)
+void	put_to_right_place(t_stack *stack_b, int tail, int *instructions)
 {
 	int	i;
 
@@ -69,12 +69,12 @@ void	put_to_right_place(t_stack *stack_b, int tail)
 	tail++;
 	while (i < tail)
 	{
-		rb(stack_b);
+		rb(stack_b, instructions);
 		i++;
 	}
 }
 
-void	push_all_to_a(t_stack *stack_a, t_stack *stack_b)
+void	push_all_to_a(t_stack *stack_a, t_stack *stack_b, int *instructions)
 {
 	int	i;
 	int	intial_b_size;
@@ -83,12 +83,12 @@ void	push_all_to_a(t_stack *stack_a, t_stack *stack_b)
 	intial_b_size = stack_b->size;
 	while (i < intial_b_size)
 	{
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, instructions);
 		i++;
 	}
 }
 
-void	push_swap_algo(t_stack *stack_a, t_stack *stack_b)
+void	push_swap_algo(t_stack *stack_a, t_stack *stack_b, int *instructions)
 {
 	int	i;
 	int	initial_a_size;
@@ -102,14 +102,14 @@ void	push_swap_algo(t_stack *stack_a, t_stack *stack_b)
 		right_place = find_right_place(stack_a, stack_b);
 		if (right_place == 0)
 		{
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, instructions);
 			i++;
 			continue ;
 		}
-		tail = setup_stack_b(stack_b, right_place);
-		pb(stack_a, stack_b);
-		put_to_right_place(stack_b, tail);
+		tail = setup_stack_b(stack_b, right_place, instructions);
+		pb(stack_a, stack_b, instructions);
+		put_to_right_place(stack_b, tail, instructions);
 		i++;
 	}
-	push_all_to_a(stack_a, stack_b);
+	push_all_to_a(stack_a, stack_b, instructions);
 }

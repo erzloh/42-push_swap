@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:32:06 by eholzer           #+#    #+#             */
-/*   Updated: 2023/01/17 14:28:06 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/01/21 20:57:53 by eric             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack *stack_a)
+void	sa(t_stack *stack_a, int *instructions)
 {
 	int	tmp;
 
@@ -21,10 +21,12 @@ void	sa(t_stack *stack_a)
 		tmp = stack_a->tab[0];
 		stack_a->tab[0] = stack_a->tab[1];
 		stack_a->tab[1] = tmp;
+		ft_printf("sa\n");
+		*instructions += 1;
 	}
 }
 
-void	sb(t_stack *stack_b)
+void	sb(t_stack *stack_b, int *instructions)
 {
 	int	tmp;
 
@@ -33,16 +35,20 @@ void	sb(t_stack *stack_b)
 		tmp = stack_b->tab[0];
 		stack_b->tab[0] = stack_b->tab[1];
 		stack_b->tab[1] = tmp;
+		ft_printf("sb\n");
+		*instructions += 1;
 	}
 }
 
-void	ss(t_stack *stack_a, t_stack *stack_b)
+void	ss(t_stack *stack_a, t_stack *stack_b, int *instructions)
 {
-	sa(stack_a);
-	sb(stack_b);
+	sa(stack_a, instructions);
+	sb(stack_b, instructions);
+	ft_printf("ss\n");
+	*instructions += 1;
 }
 
-void	pa(t_stack *stack_a, t_stack *stack_b)
+void	pa(t_stack *stack_a, t_stack *stack_b, int *instructions)
 {
 	int	*new_stack_a;
 	int	*new_stack_b;
@@ -65,9 +71,11 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 	stack_b->tab = new_stack_b;
 	stack_a->size++;
 	stack_b->size--;
+	ft_printf("pa\n");
+	*instructions += 1;
 }
 
-void	pb(t_stack *stack_a, t_stack *stack_b)
+void	pb(t_stack *stack_a, t_stack *stack_b, int *instructions)
 {
 	int	*new_stack_a;
 	int	*new_stack_b;
@@ -90,4 +98,6 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 	stack_b->tab = new_stack_b;
 	stack_a->size--;
 	stack_b->size++;
+	ft_printf("pb\n");
+	*instructions += 1;
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+         #
+#    By: eric <eric@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 21:33:09 by eric              #+#    #+#              #
-#    Updated: 2023/01/20 17:03:15 by eholzer          ###   ########.fr        #
+#    Updated: 2023/01/23 15:39:00 by eric             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS_LIST		=	main.c \
 					instructions_1.c \
 					instructions_2.c \
 					instructions_3.c \
+					check_is_arg_str.c \
 					check_int_max.c \
 					check_errors.c \
 					algorithm.c
