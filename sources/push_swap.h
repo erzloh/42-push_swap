@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:29:19 by eric              #+#    #+#             */
-/*   Updated: 2023/01/23 15:39:27 by eric             ###   ########.fr       */
+/*   Updated: 2023/02/06 16:03:37 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,15 @@ void	rra(t_stack *stack_a, int *instructions);
 void	rrb(t_stack *stack_b, int *instructions);
 void	rrr(t_stack *stack_a, t_stack *stack_b, int *instructions);
 
-// Algorithm functions
+// Old algorithm functions
 void	push_swap_algo(t_stack *stack_a, t_stack *stack_b, int *instructions);
 int		find_right_place(t_stack *stack_a, t_stack *stack_b);
 int		setup_stack_b(t_stack *stack_b, int right_place, int *instructions);
 void	put_to_right_place(t_stack *stack_b, int tail, int *instructions);
 void	push_all_to_a(t_stack *stack_a, t_stack *stack_b, int *instructions);
+
+// New algorithm functions
+void	make_tab_postive(t_stack *stack_a);
+void	radix_sort(t_stack *stack_a, t_stack *stack_b, int *instructions);
 
 #endif

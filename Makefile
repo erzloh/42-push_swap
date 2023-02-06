@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eric <eric@student.42.fr>                  +#+  +:+       +#+         #
+#    By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 21:33:09 by eric              #+#    #+#              #
-#    Updated: 2023/01/23 15:39:00 by eric             ###   ########.fr        #
+#    Updated: 2023/02/06 16:03:46 by eholzer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRCS_LIST		=	main.c \
 					check_is_arg_str.c \
 					check_int_max.c \
 					check_errors.c \
-					algorithm.c
+					algorithm.c \
+					make_tab_positive.c \
+					radix_sort.c
 SRCS_DIR		=	sources/
 SRCS			=	${addprefix ${SRCS_DIR}, ${SRCS_LIST}}
 
