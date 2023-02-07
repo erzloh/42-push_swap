@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.c                                        :+:      :+:    :+:   */
+/*   small_algo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 15:26:37 by eholzer           #+#    #+#             */
-/*   Updated: 2023/02/07 16:56:00 by eholzer          ###   ########.fr       */
+/*   Created: 2023/02/07 16:13:26 by eholzer           #+#    #+#             */
+/*   Updated: 2023/02/07 16:44:55 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	find_right_place(t_stack *stack_a, t_stack *stack_b)
 	i = 0;
 	while (i < stack_b->size)
 	{
-		if (stack_b->tab[i] < stack_a->tab[0])
+		if (stack_b->tab[i] > stack_a->tab[0])
 			break ;
 		i++;
 	}
@@ -111,5 +111,5 @@ void	push_swap_algo(t_stack *stack_a, t_stack *stack_b, int *instructions)
 		put_to_right_place(stack_b, tail, instructions);
 		i++;
 	}
-	push_all_to_a(stack_a, stack_b, instructions);
+	// push_all_to_a(stack_a, stack_b, instructions);
 }

@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:29:19 by eric              #+#    #+#             */
-/*   Updated: 2023/02/06 16:03:37 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/07 15:49:57 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
 {
 	int	*tab;
 	int	size;
+	int first;
 }	t_stack;
 
 // Errors-handling functions
@@ -58,6 +59,8 @@ void	put_to_right_place(t_stack *stack_b, int tail, int *instructions);
 void	push_all_to_a(t_stack *stack_a, t_stack *stack_b, int *instructions);
 
 // New algorithm functions
+void	small_numbers_sort(t_stack *stack_a, t_stack *stack_b, int *instructions);
+void	three_numbers_sort(t_stack *stack_a, int *instructions);
 void	make_tab_postive(t_stack *stack_a);
 void	radix_sort(t_stack *stack_a, t_stack *stack_b, int *instructions);
 

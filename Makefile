@@ -6,7 +6,7 @@
 #    By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 21:33:09 by eric              #+#    #+#              #
-#    Updated: 2023/02/06 16:03:46 by eholzer          ###   ########.fr        #
+#    Updated: 2023/02/07 16:43:11 by eholzer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,12 @@ SRCS_LIST		=	main.c \
 					check_is_arg_str.c \
 					check_int_max.c \
 					check_errors.c \
-					algorithm.c \
 					make_tab_positive.c \
-					radix_sort.c
+					radix_sort.c \
+					small_numbers_sort.c \
+					small_algo.c \
+					# algorithm.c \
+					
 SRCS_DIR		=	sources/
 SRCS			=	${addprefix ${SRCS_DIR}, ${SRCS_LIST}}
 
