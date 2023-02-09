@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:56:46 by eholzer           #+#    #+#             */
-/*   Updated: 2023/02/07 16:42:19 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/09 11:42:37 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	find_right_place(t_stack *stack_a, t_stack *stack_b)
 	return (i);
 }
 
-int	setup_stack_b(t_stack *stack_b, int right_place, int *instructions)
+int	setup_stack_b(t_stack *stack_b, int right_place)
 {
 	int	rotate;
 	int	i;
@@ -60,14 +60,14 @@ int	setup_stack_b(t_stack *stack_b, int right_place, int *instructions)
 	{
 		if (right_place >= (stack_b->size + 1) / 2)
 		{
-			rrb(stack_b, instructions);
+			rrb(stack_b);
 			stack_b->first++;
 			if (stack_b->first == stack_b->size)
 				stack_b->first = 0;
 		}
 		else
 		{
-			rb(stack_b, instructions);
+			rb(stack_b);
 			stack_b->first--;
 			if (stack_b->first == -1)
 				stack_b->first = stack_b->size - 1;
@@ -77,7 +77,7 @@ int	setup_stack_b(t_stack *stack_b, int right_place, int *instructions)
 	return (rotate);
 }
 
-void	put_to_right_place(t_stack *stack_b, int tail, int *instructions)
+void	put_to_right_place(t_stack *stack_b, int tail)
 {
 	int	i;
 
@@ -85,12 +85,12 @@ void	put_to_right_place(t_stack *stack_b, int tail, int *instructions)
 	tail++;
 	while (i < tail)
 	{
-		rb(stack_b, instructions);
+		rb(stack_b);
 		i++;
 	}
 }
 
-void	push_all_to_a(t_stack *stack_a, t_stack *stack_b, int *instructions)
+void	push_all_to_a(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 	int	intial_b_size;
@@ -99,12 +99,12 @@ void	push_all_to_a(t_stack *stack_a, t_stack *stack_b, int *instructions)
 	intial_b_size = stack_b->size;
 	while (i < intial_b_size)
 	{
-		pa(stack_a, stack_b, instructions);
+		pa(stack_a, stack_b);
 		i++;
 	}
 }
 
-void	push_swap_algo(t_stack *stack_a, t_stack *stack_b, int *instructions)
+void	push_swap_algo(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 	int	initial_a_size;
@@ -119,20 +119,20 @@ void	push_swap_algo(t_stack *stack_a, t_stack *stack_b, int *instructions)
 		right_place = find_right_place(stack_a, stack_b);
 		if (right_place == 0)
 		{
-			pb(stack_a, stack_b, instructions);
+			pb(stack_a, stack_b);
 			stack_b->first++;
 			if (stack_b->first == stack_b->size)
 				stack_b->first = 0;
 			i++;
 			continue ;
 		}
-		rotate = setup_stack_b(stack_b, right_place, instructions);
-		pb(stack_a, stack_b, instructions);
+		rotate = setup_stack_b(stack_b, right_place);
+		pb(stack_a, stack_b);
 		stack_b->first++;
 		if (stack_b->first == stack_b->size)
 				stack_b->first = 0;
-		put_to_right_place(stack_b, rotate, instructions);
+		put_to_right_place(stack_b, rotate);
 		i++;
 	}
-	push_all_to_a(stack_a, stack_b, instructions);
+	push_all_to_a(stack_a, stack_b);
 }

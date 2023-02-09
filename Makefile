@@ -6,7 +6,7 @@
 #    By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 21:33:09 by eric              #+#    #+#              #
-#    Updated: 2023/02/07 16:43:11 by eholzer          ###   ########.fr        #
+#    Updated: 2023/02/09 12:27:59 by eholzer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SRCS_LIST		=	main.c \
 					make_tab_positive.c \
 					radix_sort.c \
 					small_numbers_sort.c \
-					small_algo.c \
 					# algorithm.c \
 					
 SRCS_DIR		=	sources/

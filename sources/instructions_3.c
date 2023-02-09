@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:24:09 by eholzer           #+#    #+#             */
-/*   Updated: 2023/01/21 20:56:09 by eric             ###   ########.fr       */
+/*   Updated: 2023/02/09 11:47:36 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rrr(t_stack *stack_a, t_stack *stack_b, int *instructions)
+void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
-	rra(stack_a, instructions);
-	rrb(stack_b, instructions);
+	rra(stack_a);
+	rrb(stack_b);
 	ft_printf("rrr\n");
-	*instructions += 1;
 }

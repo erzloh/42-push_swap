@@ -6,47 +6,92 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:53:40 by eholzer           #+#    #+#             */
-/*   Updated: 2023/02/07 16:49:32 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/09 11:43:14 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	three_numbers_sort(t_stack *stack_a, int *instructions)
+// Algorithm that simply handles each possibility
+void	three_numbers_sort(t_stack *stack_a)
 {
 	if (stack_a->tab[0] < stack_a->tab[1] && stack_a->tab[1] > stack_a->tab[2]
 		&& stack_a->tab[0] < stack_a->tab[2])
 	{
-		sa(stack_a, instructions);
-		ra(stack_a, instructions);
+		sa(stack_a);
+		ra(stack_a);
 	}
 	if (stack_a->tab[0] > stack_a->tab[1] && stack_a->tab[1] < stack_a->tab[2]
 		&& stack_a->tab[0] < stack_a->tab[2])
-		sa(stack_a, instructions);
+		sa(stack_a);
 	if (stack_a->tab[0] < stack_a->tab[1] && stack_a->tab[1] > stack_a->tab[2]
 		&& stack_a->tab[0] > stack_a->tab[2])
-		rra(stack_a, instructions);
+		rra(stack_a);
 	if (stack_a->tab[0] > stack_a->tab[1] && stack_a->tab[1] < stack_a->tab[2]
 		&& stack_a->tab[0] > stack_a->tab[2])
-		ra(stack_a, instructions);
+		ra(stack_a);
 	if (stack_a->tab[0] > stack_a->tab[1] && stack_a->tab[1] > stack_a->tab[2]
 		&& stack_a->tab[0] > stack_a->tab[2])
 	{
-		sa(stack_a, instructions);
-		rra(stack_a, instructions);
+		sa(stack_a);
+		rra(stack_a);
 	}
 }
 
-// Algorithm to sort small numbers (the algorithm for three numbers is simply handling each possibility)
-void	small_numbers_sort(t_stack *stack_a, t_stack *stack_b, int *instructions)
+// Algorithm to find sort an small input of numbers
+//
+// Find the smallest number in A.
+// Check whether the smallest number is in the first or second half of A.
+// Make it to the top of A accordingly (with ra or rra).
+// pb.
+// Repeat until the size of A is 3.
+// Apply three_numbers_sort().
+// pa until B is empty.
+// Algorithm to sort small numbers
+
+void	pb_smallest_number(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a->size == 3)
-		three_numbers_sort(stack_a, instructions);
+	int	i;
+	int	min;
+	int	rotate;
+
+	i = -1;
+	min = 0;
+	while (++i < stack_a->size - 1)
+		if (stack_a->tab[i] > stack_a->tab[i + 1])
+			min = i + 1;
+	if (min <= stack_a->size / 2)
+	{
+		rotate = min;
+		while (rotate--)
+			ra(stack_a);
+	}
+	else
+	{
+		rotate = stack_a->size - min;
+		while (rotate--)
+			rra(stack_a);
+	}
+	pb(stack_a, stack_b);
+}
+
+void	small_numbers_sort(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a->size == 1)
+		return ;
+	else if (stack_a->size == 2)
+	{
+		if (stack_a->tab[0] > stack_a->tab[1])
+			sa(stack_a);
+	}
+	else if (stack_a->size == 3)
+		three_numbers_sort(stack_a);
 	else
 	{
 		while (stack_a->size > 3)
-			pb(stack_a, stack_b, instructions);
-		three_numbers_sort(stack_a, instructions);
-		push_swap_algo(stack_b, stack_a, instructions);
+			pb_smallest_number(stack_a, stack_b);
+		three_numbers_sort(stack_a);
+		while (stack_b->size)
+			pa(stack_a, stack_b);
 	}
 }

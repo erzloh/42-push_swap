@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:31:21 by eholzer           #+#    #+#             */
-/*   Updated: 2023/01/22 15:20:43 by eric             ###   ########.fr       */
+/*   Updated: 2023/02/09 12:19:38 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// Free elements of a 2D array
+void	free_2d_tab(char **av, t_stack *stack_a)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack_a->size + 2)
+	{
+		free(av[i]);
+		i++;
+	}
+	free(av);
+}
 
 // Initialize the stack_a struct with its tab and its size
 void	init_stacks(int ac, char **av, t_stack *stack_a, t_stack *stack_b)
@@ -27,6 +41,8 @@ void	init_stacks(int ac, char **av, t_stack *stack_a, t_stack *stack_b)
 	}
 	stack_b->tab = NULL;
 	stack_b->size = 0;
+	if (stack_a->arg_is_str)
+		free_2d_tab(av, stack_a);
 }
 
 // Print the tab of stack

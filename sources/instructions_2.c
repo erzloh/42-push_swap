@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:41:52 by eholzer           #+#    #+#             */
-/*   Updated: 2023/01/21 20:55:56 by eric             ###   ########.fr       */
+/*   Updated: 2023/02/09 11:47:11 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_stack *stack_a, int *instructions)
+void	ra(t_stack *stack_a)
 {
 	int	tmp;
 	int	i;
@@ -28,10 +28,9 @@ void	ra(t_stack *stack_a, int *instructions)
 	}
 	stack_a->tab[stack_a->size - 1] = tmp;
 	ft_printf("ra\n");
-	*instructions += 1;
 }
 
-void	rb(t_stack *stack_b, int *instructions)
+void	rb(t_stack *stack_b)
 {
 	int	tmp;
 	int	i;
@@ -47,18 +46,16 @@ void	rb(t_stack *stack_b, int *instructions)
 	}
 	stack_b->tab[stack_b->size - 1] = tmp;
 	ft_printf("rb\n");
-	*instructions += 1;
 }
 
-void	rr(t_stack *stack_a, t_stack *stack_b, int *instructions)
+void	rr(t_stack *stack_a, t_stack *stack_b)
 {
-	ra(stack_a, instructions);
-	rb(stack_b, instructions);
+	ra(stack_a);
+	rb(stack_b);
 	ft_printf("rr\n");
-	*instructions += 1;
 }
 
-void	rra(t_stack *stack_a, int *instructions)
+void	rra(t_stack *stack_a)
 {
 	int	tmp;
 	int	i;
@@ -76,10 +73,9 @@ void	rra(t_stack *stack_a, int *instructions)
 	}
 	stack_a->tab[0] = tmp;
 	ft_printf("rra\n");
-	*instructions += 1;
 }
 
-void	rrb(t_stack *stack_b, int *instructions)
+void	rrb(t_stack *stack_b)
 {
 	int	tmp;
 	int	i;
@@ -97,5 +93,4 @@ void	rrb(t_stack *stack_b, int *instructions)
 	}
 	stack_b->tab[0] = tmp;
 	ft_printf("rrb\n");
-	*instructions += 1;
 }

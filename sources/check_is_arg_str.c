@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_is_arg_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eric <eric@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:59:24 by eric              #+#    #+#             */
-/*   Updated: 2023/01/23 16:23:44 by eric             ###   ########.fr       */
+/*   Updated: 2023/02/09 12:02:37 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	str_tab_len(char **str_tab)
 // Return 0 if there is a malloc error, 
 // if there are no elements in the string argument,
 // if there are not exactly 2 arguments.
-void	check_is_arg_str(int *ac_ptr, char ***av_ptr)
+void	check_is_arg_str(int *ac_ptr, char ***av_ptr, t_stack *stack_a)
 {
 	char	**args;
 	int		args_size;
@@ -38,6 +38,7 @@ void	check_is_arg_str(int *ac_ptr, char ***av_ptr)
 		return ;
 	args = ft_split((*av_ptr)[1], ' ');
 	args_size = str_tab_len(args);
+	stack_a->arg_is_str = 0;
 	if (args_size > 1)
 	{
 		new_av = malloc(sizeof(char *) * (args_size + 2));
@@ -51,5 +52,6 @@ void	check_is_arg_str(int *ac_ptr, char ***av_ptr)
 		new_av[args_size + 1] = 0;
 		*ac_ptr = args_size + 1;
 		*av_ptr = new_av;
+		stack_a->arg_is_str = 1;
 	}
 }
