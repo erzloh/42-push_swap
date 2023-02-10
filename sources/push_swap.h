@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:29:19 by eric              #+#    #+#             */
-/*   Updated: 2023/02/10 15:01:59 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/10 15:24:06 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	push_all_to_a(t_stack *stack_a, t_stack *stack_b);
 // New algorithm functions
 void	small_numbers_sort(t_stack *stack_a, t_stack *stack_b);
 void	three_numbers_sort(t_stack *stack_a);
+int		get_smallest_number_i(t_stack *stack_a);
 void	pb_smallest_number(t_stack *stack_a, t_stack *stack_b);
 void	make_tab_postive(t_stack *stack_a);
 void	radix_sort(t_stack *stack_a, t_stack *stack_b);
