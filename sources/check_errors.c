@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 16:06:56 by eholzer           #+#    #+#             */
-/*   Updated: 2023/01/20 10:22:22 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/09 17:08:12 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,10 @@ int	check_digits(int ac, char **av)
 	while (j < ac)
 	{
 		i = 0;
+		if (av[j][0] == '-' && av[j][1])
+			i++;
 		while (av[j][i])
 		{
-			if (av[j][0] == '-')
-			{
-				i++;
-				break ;
-			}
 			if (!ft_isdigit(av[j][i]))
 				return (ERROR);
 			i++;
@@ -83,13 +80,15 @@ int	check_int_max(int ac, char **av)
 	return (0);
 }
 
-int	check_errors(int ac, char **av)
+int	check_input_errors(int ac, char **av, t_stack *stack_a)
 {
 	if (check_digits(ac, av) == ERROR
 		|| check_int_max(ac, av) == ERROR
 		|| check_doubles(ac, av))
 	{
 		ft_putstr_fd("Error\n", STDERR_FILENO);
+		if (stack_a->arg_is_str)
+			free_2d_tab(av, stack_a);
 		return (ERROR);
 	}
 	return (0);

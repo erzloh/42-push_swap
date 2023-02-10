@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:53:40 by eholzer           #+#    #+#             */
-/*   Updated: 2023/02/09 11:43:14 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/09 15:38:51 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ void	pb_smallest_number(t_stack *stack_a, t_stack *stack_b)
 
 void	small_numbers_sort(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a->size == 1)
+
+	if (stack_a->size <= 1)
 		return ;
 	else if (stack_a->size == 2)
 	{

@@ -6,7 +6,7 @@
 #    By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 21:33:09 by eric              #+#    #+#              #
-#    Updated: 2023/02/09 12:27:59 by eholzer          ###   ########.fr        #
+#    Updated: 2023/02/09 15:46:24 by eholzer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ LIB_DIR			=	libft
 
 CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra -g
+# -fsanitize=address
 
 all:			${NAME}
 

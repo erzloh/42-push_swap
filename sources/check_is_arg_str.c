@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:59:24 by eric              #+#    #+#             */
-/*   Updated: 2023/02/09 12:02:37 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/10 10:22:14 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ void	check_is_arg_str(int *ac_ptr, char ***av_ptr, t_stack *stack_a)
 	char	**new_av;
 	int		i;
 
+	stack_a->arg_is_str = 0;
 	if (*ac_ptr != 2)
 		return ;
 	args = ft_split((*av_ptr)[1], ' ');
 	args_size = str_tab_len(args);
-	stack_a->arg_is_str = 0;
 	if (args_size > 1)
 	{
 		new_av = malloc(sizeof(char *) * (args_size + 2));
@@ -53,5 +53,12 @@ void	check_is_arg_str(int *ac_ptr, char ***av_ptr, t_stack *stack_a)
 		*ac_ptr = args_size + 1;
 		*av_ptr = new_av;
 		stack_a->arg_is_str = 1;
+		stack_a->size = args_size;
+		free(args);
+	}
+	else
+	{
+		free(args[0]);
+		free(args);
 	}
 }

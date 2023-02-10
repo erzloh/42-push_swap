@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:31:08 by eholzer           #+#    #+#             */
-/*   Updated: 2023/02/09 11:58:48 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/10 10:16:56 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,15 @@ int	main(int ac, char **av)
 	t_stack	stack_b;
 
 	check_is_arg_str(&ac, &av, &stack_a);
-	if (check_errors(ac, av) == ERROR)
+
+	// if (check_input_errors(ac, av, &stack_a) == ERROR)
+	// {
+	// 	while (1)
+	// 	{
+	// 	}
+	// }
+
+	if (check_input_errors(ac, av, &stack_a) == ERROR)
 		return (1);
 	init_stacks(ac, av, &stack_a, &stack_b);
 
@@ -34,9 +42,11 @@ int	main(int ac, char **av)
 	// print_tab(stack_a);
 	// ft_printf("STACK B ----------\n");
 	// print_tab(stack_b);
-
-	// free(stack_a.tab);
-	// free(stack_b.tab);
+	
+	// while (1)
+	// {
+		
+	// }
 	return (0);
 }
 
