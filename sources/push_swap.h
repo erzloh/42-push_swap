@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:29:19 by eric              #+#    #+#             */
-/*   Updated: 2023/02/09 16:41:50 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/10 15:01:59 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ typedef struct s_stack
 	int		*tab;
 	int		size;
 	char	arg_is_str;
-	// int	first;
 }	t_stack;
 
 // Errors-handling functions
 int		str_tab_len(char **str_tab);
+void	create_new_av(int *ac_ptr, char ***av_ptr, int args_size, char **args);
 void	check_is_arg_str(int *ac_ptr, char ***av_ptr, t_stack *stack_a);
 int		check_input_errors(int ac, char **av, t_stack *stack_a);
 int		check_digits(int ac, char **av);
@@ -39,6 +39,7 @@ double	check_int_max_atoi(const char *str);
 void	free_2d_tab(char **av, t_stack *stack_a);
 void	init_stacks(int ac, char **av, t_stack *stack_a, t_stack *stack_b);
 void	print_tab(t_stack stack);
+int		is_stack_sorted(t_stack stack_a);
 
 // Instruction functions
 void	sa(t_stack *stack_a);

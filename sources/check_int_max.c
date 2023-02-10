@@ -6,13 +6,13 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:55:43 by eholzer           #+#    #+#             */
-/*   Updated: 2023/01/19 16:24:41 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/10 14:49:07 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	power(int nb, int power)
+static double	power(int nb, int power)
 {
 	int	res;
 

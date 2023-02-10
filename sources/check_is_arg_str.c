@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:59:24 by eric              #+#    #+#             */
-/*   Updated: 2023/02/10 10:22:14 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/10 15:05:07 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,25 @@ int	str_tab_len(char **str_tab)
 	return (i);
 }
 
+void	create_new_av(int *ac_ptr, char ***av_ptr, int args_size, char **args)
+{
+	char	**new_av;
+	int		i;
+
+	new_av = malloc(sizeof(char *) * (args_size + 2));
+	i = 0;
+	new_av[0] = 0;
+	while (i < args_size)
+	{
+		new_av[i + 1] = args[i];
+		i++;
+	}
+	new_av[args_size + 1] = 0;
+	*ac_ptr = args_size + 1;
+	*av_ptr = new_av;
+	free(args);
+}
+
 // Return 0 if there is a malloc error, 
 // if there are no elements in the string argument,
 // if there are not exactly 2 arguments.
@@ -31,8 +50,6 @@ void	check_is_arg_str(int *ac_ptr, char ***av_ptr, t_stack *stack_a)
 {
 	char	**args;
 	int		args_size;
-	char	**new_av;
-	int		i;
 
 	stack_a->arg_is_str = 0;
 	if (*ac_ptr != 2)
@@ -41,20 +58,9 @@ void	check_is_arg_str(int *ac_ptr, char ***av_ptr, t_stack *stack_a)
 	args_size = str_tab_len(args);
 	if (args_size > 1)
 	{
-		new_av = malloc(sizeof(char *) * (args_size + 2));
-		i = 0;
-		new_av[0] = 0;
-		while (i < args_size)
-		{
-			new_av[i + 1] = args[i];
-			i++;
-		}
-		new_av[args_size + 1] = 0;
-		*ac_ptr = args_size + 1;
-		*av_ptr = new_av;
+		create_new_av(ac_ptr, av_ptr, args_size, args);
 		stack_a->arg_is_str = 1;
 		stack_a->size = args_size;
-		free(args);
 	}
 	else
 	{

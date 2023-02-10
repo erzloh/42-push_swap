@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_new.c                                    :+:      :+:    :+:   */
+/*   algorithm_old.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 11:56:46 by eholzer           #+#    #+#             */
-/*   Updated: 2023/02/09 11:42:37 by eholzer          ###   ########.fr       */
+/*   Created: 2023/01/20 15:26:37 by eholzer           #+#    #+#             */
+/*   Updated: 2023/02/10 14:48:41 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,33 +48,17 @@ int	find_right_place(t_stack *stack_a, t_stack *stack_b)
 
 int	setup_stack_b(t_stack *stack_b, int right_place)
 {
-	int	rotate;
+	int	tail;
 	int	i;
 
-	if (right_place >= (stack_b->size + 1) / 2)
-		rotate = stack_b->size - right_place;
-	else
-		rotate = right_place;
+	tail = stack_b->size - right_place;
 	i = 0;
-	while (i < rotate)
+	while (i < tail)
 	{
-		if (right_place >= (stack_b->size + 1) / 2)
-		{
-			rrb(stack_b);
-			stack_b->first++;
-			if (stack_b->first == stack_b->size)
-				stack_b->first = 0;
-		}
-		else
-		{
-			rb(stack_b);
-			stack_b->first--;
-			if (stack_b->first == -1)
-				stack_b->first = stack_b->size - 1;
-		}
+		rrb(stack_b);
 		i++;
 	}
-	return (rotate);
+	return (tail);
 }
 
 void	put_to_right_place(t_stack *stack_b, int tail)
@@ -109,29 +93,22 @@ void	push_swap_algo(t_stack *stack_a, t_stack *stack_b)
 	int	i;
 	int	initial_a_size;
 	int	right_place;
-	int	rotate;
+	int	tail;
 
 	i = 0;
 	initial_a_size = stack_a->size;
-	stack_b->first = 0;
 	while (i < initial_a_size)
 	{
 		right_place = find_right_place(stack_a, stack_b);
 		if (right_place == 0)
 		{
 			pb(stack_a, stack_b);
-			stack_b->first++;
-			if (stack_b->first == stack_b->size)
-				stack_b->first = 0;
 			i++;
 			continue ;
 		}
-		rotate = setup_stack_b(stack_b, right_place);
+		tail = setup_stack_b(stack_b, right_place);
 		pb(stack_a, stack_b);
-		stack_b->first++;
-		if (stack_b->first == stack_b->size)
-				stack_b->first = 0;
-		put_to_right_place(stack_b, rotate);
+		put_to_right_place(stack_b, tail);
 		i++;
 	}
 	push_all_to_a(stack_a, stack_b);

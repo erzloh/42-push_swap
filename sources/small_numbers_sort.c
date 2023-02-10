@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:53:40 by eholzer           #+#    #+#             */
-/*   Updated: 2023/02/09 15:38:51 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/10 12:38:04 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,30 @@ void	three_numbers_sort(t_stack *stack_a)
 void	pb_smallest_number(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
-	int	min;
+	int	min_i;
 	int	rotate;
+	int	min_val;
 
-	i = -1;
-	min = 0;
-	while (++i < stack_a->size - 1)
-		if (stack_a->tab[i] > stack_a->tab[i + 1])
-			min = i + 1;
-	if (min <= stack_a->size / 2)
+	i = 0;
+	min_i = 0;
+	min_val = stack_a->tab[0];
+	while (++i < stack_a->size)
 	{
-		rotate = min;
+		if (stack_a->tab[i] < min_val)
+		{
+			min_val = stack_a->tab[i];
+			min_i = i;
+		}
+	}
+	if (min_i <= stack_a->size / 2)
+	{
+		rotate = min_i;
 		while (rotate--)
 			ra(stack_a);
 	}
 	else
 	{
-		rotate = stack_a->size - min;
+		rotate = stack_a->size - min_i;
 		while (rotate--)
 			rra(stack_a);
 	}
@@ -77,7 +84,6 @@ void	pb_smallest_number(t_stack *stack_a, t_stack *stack_b)
 
 void	small_numbers_sort(t_stack *stack_a, t_stack *stack_b)
 {
-
 	if (stack_a->size <= 1)
 		return ;
 	else if (stack_a->size == 2)

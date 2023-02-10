@@ -10,7 +10,7 @@
 			"name": "Debug in Terminal",
 			"program": "${workspaceFolder}/push_swap",
 			// "args": ["5", "9", "3", "6", "4", "12"],
-			"args": ["--50"],
+			"args": ["9876543210"],
 			"cwd": "${workspaceFolder}"
 		}
 	]

@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:31:21 by eholzer           #+#    #+#             */
-/*   Updated: 2023/02/10 10:23:25 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/10 10:47:43 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,19 @@ void	print_tab(t_stack stack)
 		ft_printf("%d\n", stack.tab[i]);
 		i++;
 	}
+}
+
+// Return 1 if the stack is sorted, 0 if it's not
+int	is_stack_sorted(t_stack stack_a)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack_a.size - 1)
+	{
+		if (stack_a.tab[i] > stack_a.tab[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }
