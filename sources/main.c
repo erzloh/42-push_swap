@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:31:08 by eholzer           #+#    #+#             */
-/*   Updated: 2023/02/10 15:12:36 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/14 13:15:54 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 		free(stack_a.tab);
 		return (0);
 	}
-	if (stack_a.size <= 5)
+	if (stack_a.size <= 50)
 		small_numbers_sort(&stack_a, &stack_b);
 	else
 	{

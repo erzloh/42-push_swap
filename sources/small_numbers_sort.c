@@ -6,7 +6,7 @@
 /*   By: eholzer <eholzer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:53:40 by eholzer           #+#    #+#             */
-/*   Updated: 2023/02/10 15:24:11 by eholzer          ###   ########.fr       */
+/*   Updated: 2023/02/14 13:01:02 by eholzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	get_smallest_number_i(t_stack *stack_a)
 
 	i = 0;
 	min_val = stack_a->tab[0];
+	min_i = 0;
 	while (++i < stack_a->size)
 	{
 		if (stack_a->tab[i] < min_val)
