@@ -21,7 +21,7 @@ To use Push_swap, follow these steps:
 
 1. Clone the repository to your local machine:
 ``` bash
-git clone https://github.com/your-username/push_swap.git
+git clone https://github.com/erzloh/42-push_swap.git
 ```
 2. Compile the program:
 ``` go
